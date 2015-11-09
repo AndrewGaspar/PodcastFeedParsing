@@ -26,7 +26,7 @@ namespace Podcasts.Dom.Test
             Assert.AreEqual("Giant Bomb", beastcast.ITunes.Owner.Name);
             Assert.AreEqual("beastcast@giantbomb.com", beastcast.ITunes.Owner.Email);
             
-            var episode11 = beastcast.Items.First(item => item.Guid == "1600-1309");
+            var episode11 = beastcast.Items.First(item => item.Guid.Value == "1600-1309");
 
             Assert.AreEqual("The Giant Beastcast: Episode 11", episode11.Title);
             Assert.AreEqual(

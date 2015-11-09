@@ -47,6 +47,19 @@ namespace Podcasts.Dom
             }
         }
 
+        private static bool? TryParseBool(string value)
+        {
+            bool result;
+            if (bool.TryParse(value, out result))
+            {
+                return result;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         private static DateTime? TryParseDateTime(string value) =>
             DateTimeParsing.TryParseDateTime(value);
 
@@ -104,6 +117,11 @@ namespace Podcasts.Dom
                 return (T)(object)TryParseUint(value);
             }
 
+            if (type == typeof(bool?))
+            {
+                return (T)(object)TryParseBool(value);
+            }
+
             if (type == typeof(Uri))
             {
                 return (T)(object)TryParseUri(value);
@@ -119,12 +137,12 @@ namespace Podcasts.Dom
                 return (T)(object)TryParseTimeSpan(value);
             }
 
-            if(type == typeof(ExplicitEnum?))
+            if (type == typeof(ExplicitEnum?))
             {
                 return (T)(object)ExplicitEnumHelper.TryParseExplicitEnum(value);
             }
 
-            if(type == typeof(YesEnum?))
+            if (type == typeof(YesEnum?))
             {
                 return (T)(object)YesEnumHelper.TryParseYesEnum(value);
             }

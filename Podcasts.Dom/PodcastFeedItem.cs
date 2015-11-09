@@ -82,8 +82,43 @@ namespace Podcasts.Dom
             }
         }
 
-        private SetOnce<string> _guid;
-        public string Guid => LazyLoadContent(ref _guid, "guid");
+        public class ItemGuidElement : XElementHost
+        {
+            public ItemGuidElement(XElement element) : base(element) { }
+
+            private SetOnce<string> _value;
+            public string Value
+            {
+                get
+                {
+                    if(_value == null)
+                    {
+                        _value = SetOnce<string>.Create((Element.FirstNode as XText)?.Value);
+                    }
+
+                    return _value.Extract();
+                }
+            }
+
+            private SetOnce<bool?> _isPermaLink;
+            public bool? IsPermaLink => LazyLoadAttribute<bool?>(ref _isPermaLink, "isPermaLink");
+        }
+
+        private SetOnce<ItemGuidElement> _guid;
+        public ItemGuidElement Guid
+        {
+            get
+            {
+                if(_guid == null)
+                {
+                    var element = Element.Element("guid");
+
+                    _guid = SetOnce<ItemGuidElement>.Create(element == null ? null : new ItemGuidElement(element));
+                }
+
+                return _guid.Extract();
+            }
+        }
 
         private SetOnce<DateTime?> _pubDate;
         public DateTime? PubDate => LazyLoadContent(ref _pubDate, "pubDate");
