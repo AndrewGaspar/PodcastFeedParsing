@@ -9,11 +9,20 @@ namespace Podcasts.Dom.Test
     [TestClass]
     public class LocalFeedTests
     {
+        private IUriResolution _uriResolution;
+
+        [TestInitialize]
+        public void InitTest()
+        {
+            _uriResolution = new TestFeedResolution("TestFeeds");
+        }
+
         private async Task<PodcastFeed> OpenTestFeed(string fileName)
         {
-            using (var file = File.OpenRead($@"TestFeeds\{fileName}"))
+            using (var stream = await _uriResolution.GetStreamAsync(
+                new Uri(fileName, UriKind.Relative)))
             {
-                return await PodcastFeed.LoadFeedAsync(file);
+                return await PodcastFeed.LoadFeedAsync(stream);
             }
         }
 

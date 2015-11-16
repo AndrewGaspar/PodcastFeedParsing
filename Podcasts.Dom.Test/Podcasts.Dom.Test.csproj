@@ -56,6 +56,8 @@
     <Compile Include="ParsingTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LocalFeedTests.cs" />
+    <Compile Include="RedirectionTests.cs" />
+    <Compile Include="TestFeedResolution.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Podcasts.Dom\Podcasts.Dom.csproj">

@@ -45,10 +45,13 @@
     <Compile Include="ITunesImageElement.cs" />
     <Compile Include="LazyCacheEnumerable.cs" />
     <Compile Include="Parsing.cs" />
+    <Compile Include="PodcastDomConfiguration.cs" />
     <Compile Include="PodcastFeed.cs" />
     <Compile Include="PodcastFeedItem.cs" />
+    <Compile Include="RedirectResolver.cs" />
     <Compile Include="SetOnce.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UriResolution.cs" />
     <Compile Include="XElementHost.cs" />
     <Compile Include="YesEnum.cs" />
   </ItemGroup>

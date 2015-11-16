@@ -213,13 +213,7 @@ namespace Podcasts.Dom
         
         public static async Task<PodcastFeed> LoadFeedAsync(Uri location)
         {
-            if(location.Scheme != "http" && location.Scheme != "https")
-            {
-                throw new ArgumentOutOfRangeException($"{nameof(location)} must be an http or https URI");
-            }
-
-            using (var client = new HttpClient())
-            using (var stream = await client.GetStreamAsync(location).ConfigureAwait(false))
+            using (var stream = await PodcastDomConfiguration.Current.UriResolution.GetStreamAsync(location).ConfigureAwait(false))
             {
                 return await LoadFeedAsync(stream).ConfigureAwait(false);
             }
