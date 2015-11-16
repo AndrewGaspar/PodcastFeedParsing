@@ -52,7 +52,7 @@ namespace Podcasts.Dom
                 PodcastFeed feed;
                 using (var stream = await uriResolver.GetStreamAsync(podcastUri))
                 {
-                    feed = await PodcastFeed.LoadFeedAsync(podcastUri).ConfigureAwait(false);
+                    feed = await PodcastFeed.LoadFeedAsync(stream).ConfigureAwait(false);
                 }
 
                 if (feed.ITunes.NewFeedUrl == null)

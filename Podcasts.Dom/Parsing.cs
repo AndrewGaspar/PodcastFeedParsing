@@ -37,7 +37,7 @@ namespace Podcasts.Dom
         private static Uri TryParseUri(string value)
         {
             Uri result;
-            if (Uri.TryCreate(value, UriKind.Absolute, out result))
+            if (Uri.TryCreate(value, UriKind.RelativeOrAbsolute, out result))
             {
                 return result;
             }

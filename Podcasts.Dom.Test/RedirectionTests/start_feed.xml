@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+    <channel xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+        <title>Test Feed No Longer Valid</title>
+        <description>This is an invalid feed that points to a new, updated feed.</description>
+        <link>http://www.old-website.com</link>
+        <itunes:new-feed-url>end_feed.xml</itunes:new-feed-url>
+    </channel>
+</rss>
